@@ -4,6 +4,12 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
+  post '/signup', to: 'users#create'
+  get '/me', to: 'users#show'
+
+  resources :users
+
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
+
 
 end
