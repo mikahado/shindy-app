@@ -3,7 +3,7 @@ import { UserContext } from './context/user'
 
 const CustomerForm = ({setPunchcardFlag}) => {
 
-  const [ username, setUsername ] = useState("")
+  const [ name, setName ] = useState("")
 
   const { addCustomer, errors } = useContext(UserContext)
 
@@ -12,7 +12,7 @@ const CustomerForm = ({setPunchcardFlag}) => {
     e.preventDefault()
     
     addCustomer({
-        username: username
+        name: name
     })
     setPunchcardFlag(false)
  }
@@ -26,9 +26,9 @@ const CustomerForm = ({setPunchcardFlag}) => {
                 <input 
                     type="text" 
                     id="username"
-                    value={username}
+                    value={name}
                     placeholder={"Enter name"}
-                    onChange={e => setUsername(e.target.value)}
+                    onChange={e => setName(e.target.value)}
                 />
 
                 {errors}
