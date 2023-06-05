@@ -2,7 +2,6 @@ pg_ctl -D /usr/local/var/postgres start
 
 brew services start postgresql
 
-
 git add .
-git commit -m 'buildtest1'
+git commit -m 'buildtest2'
 git push heroku main
