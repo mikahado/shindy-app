@@ -9,7 +9,7 @@ const CustomerNameEdit = ({ id, setNameFlag }) => {
   useEffect(() => {
     const storedCustomer = allCustomers.find((p) => p.id === id);
     if (storedCustomer) {
-      setName(storedCustomer.username);
+      setName(storedCustomer.name);
     }
   }, [allCustomers, id])
 
@@ -18,7 +18,7 @@ const CustomerNameEdit = ({ id, setNameFlag }) => {
 
     editCustomerName({
       id: id,
-      username: name,
+      name: name,
     });
     setNameFlag()
   };

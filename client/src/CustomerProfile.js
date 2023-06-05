@@ -40,8 +40,8 @@ if (loggedIn) {
         <article className="card">
 
             <header >
-              <h1>{customer.username}</h1>
-              <p>[client's email]</p>
+              <h1>{customer.name}</h1>
+              <p>{customer.email}</p>
             </header>
            
            {displayPunchcards}

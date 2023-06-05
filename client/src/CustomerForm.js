@@ -25,7 +25,7 @@ const CustomerForm = ({setPunchcardFlag}) => {
               <label>Add a New Client</label>
                 <input 
                     type="text" 
-                    id="username"
+                    id="name"
                     value={name}
                     placeholder={"Enter name"}
                     onChange={e => setName(e.target.value)}

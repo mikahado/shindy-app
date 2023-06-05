@@ -8,13 +8,13 @@ const AllCustomersTable = () => {
 
   const {allCustomers } = useContext(UserContext)
 
-  const filterBySearch = allCustomers.filter(c => c.username.toLowerCase().includes(searchClient.toLowerCase()))
+  const filterBySearch = allCustomers.filter(c => c.name.toLowerCase().includes(searchClient.toLowerCase()))
 
   const customerEntry = filterBySearch.map(c => 
     <AllCustomersRow 
       id={c.id}
       key={c.id}
-      name={c.username}
+      name={c.name}
       />)
 
   const handleSearchChange = (e) => {
