@@ -17,7 +17,7 @@ const UserProvider = ( {children } ) => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        fetch('/me')
+        fetch('/api/me')
         .then(resp => resp.json())
         .then(data => {
             setUser(data)
@@ -31,13 +31,13 @@ const UserProvider = ( {children } ) => {
     }, [loggedIn])
 
    const getAllCustomers = () => {
-      fetch('/customers')
+      fetch('/api/customers')
       .then(resp => resp.json())
       .then(data => setAllCustomers(data))
    }
 
    const addPunchcard = (punchcard) => {
-    fetch('/punchcards', {
+    fetch('/api/punchcards', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(punchcard)
@@ -68,7 +68,7 @@ const UserProvider = ( {children } ) => {
     }
 
     const addCustomer = (customer) => {
-        fetch('/customers', {
+        fetch('/api/customers', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(customer)
@@ -90,7 +90,7 @@ const UserProvider = ( {children } ) => {
     }
 
     const editCustomerName = (customer) => {
-        fetch(`/customers/${customer.id}`, {
+        fetch(`/api/customers/${customer.id}`, {
             method: 'PATCH',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(customer)
@@ -108,7 +108,7 @@ const UserProvider = ( {children } ) => {
     }
 
     const deleteCustomer = (id) => {
-      fetch(`/customers/${id}`, {
+      fetch(`/api/customers/${id}`, {
         method: "DELETE",
       })
         .then(() => {
@@ -121,7 +121,7 @@ const UserProvider = ( {children } ) => {
     }
 
     const editPunchCount = (punchcard) => {
-        fetch(`/punchcards/${punchcard.id}`, {
+        fetch(`/api/punchcards/${punchcard.id}`, {
             method: 'PATCH',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(punchcard)

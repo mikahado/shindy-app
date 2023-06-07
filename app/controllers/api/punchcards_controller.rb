@@ -1,4 +1,4 @@
-class PunchcardsController < ApplicationController
+class Api::PunchcardsController < ApplicationController
     
     before_action :set_punchcard, only: [:index, :show, :update]
 
