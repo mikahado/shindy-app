@@ -5,10 +5,6 @@ const PunchcardPreview = ({punchcard}) => {
 
   const { allCustomers, editPunchCount } = useContext(UserContext)
 
-  // move this logic to backend:
-  const userName = allCustomers?.map(u => u.users).flat().find(u => u.id === punchcard.user_id)
-  console.log('stll need to fix this', userName)
-
   const handlePunch = (e) => {
     e.preventDefault()
 
@@ -22,15 +18,12 @@ const PunchcardPreview = ({punchcard}) => {
     <>
     <article>
       <header>
-      {/* <em>{userName.username}</em> */}
-
-      <h2>{userName?.username}</h2>
+      <h2>{punchcard?.username}</h2>
 
       </header>
   
       <h3>{punchcard?.count} more to go</h3>
-
-      <p>{punchcard.reward}!</p>
+      <p>{punchcard?.reward}!</p>
       <footer>
      
              <button className="punch-button" 

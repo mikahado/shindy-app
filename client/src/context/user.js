@@ -157,11 +157,11 @@ const UserProvider = ( {children } ) => {
           );
           return { ...c, punchcards: updatedPunchcards };
         } else {
-          return c;
+          return c
         }
-      });
+      })
       setAllCustomers(updatedCustomers);
-    };
+    }
     
 
     // const editPunchCount = (punchcard) => {

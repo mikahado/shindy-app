@@ -10,20 +10,10 @@ import CustomerNameEdit from './CustomerNameEdit'
 const CustomerProfile = () => {
 
     const [addPunchcardFlag, setAddPunchcardFlag] = useState(false)
-    
-    const [editFlag, setEditFlag ] = useState(false)
     const [editNameFlag, setEditNameFlag] = useState(false)
-    // const [customer, setCustomer ] = useState([])
   
     const { deleteCustomer, allCustomers, loggedIn} = useContext(UserContext)
-
     const { id } = useParams()
-
-    // useEffect(() => {
-    //   fetch(`/customers/${id}`)
-    //   .then(resp => resp.json())
-    //   .then(data => setCustomer(data))
-    // }, [id])
 
     const customer = allCustomers?.find(c => c.id === parseInt(id)) || []
 
@@ -33,7 +23,6 @@ const CustomerProfile = () => {
             id={p.id}
             punchcard={p}
         />)
-
 
 if (loggedIn) {
   return (
@@ -56,11 +45,8 @@ if (loggedIn) {
                 <button className="button1" onClick={() => setAddPunchcardFlag(true)}>ADD NEW PUNCHCARD</button>
             } 
 
-            
             </footer>
-
         </article>
-
         <article className="card">
         Settings
         <br/><br/>
@@ -72,12 +58,6 @@ if (loggedIn) {
             } 
             
             <br />
-
-          {/* {editFlag ? 
-                <PunchcardEdit editFlag={setEditFlag} /> 
-                :
-                <button className="button1" onClick={() => setEditFlag(true)}>Edit Punchcard</button>
-            } */}
 
           <br />
             <button  className="button1" onClick={() => deleteCustomer(customer.id)}>Delete</button>
