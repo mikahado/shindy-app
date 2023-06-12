@@ -1,10 +1,8 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { UserContext } from './context/user'
 import { useParams } from 'react-router-dom'
-import PunchcardEdit from './PunchcardEdit'
 import PunchcardPreview from './PunchcardPreview'
 import PunchcardForm from './PunchcardForm'
-import CustomerForm from './CustomerForm';
 import CustomerNameEdit from './CustomerNameEdit'
 
 const CustomerProfile = () => {
