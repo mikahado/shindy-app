@@ -46,8 +46,9 @@ const UserProvider = ( {children } ) => {
     .then(data => {
         if (!data.errors) {
             handleAddedPunchcard(data)
+            console.log(data)
             setFormFlag(false)
-            navigate(`/customers/${data.customer_id}`)
+            // navigate(`/customers/${data.customer_id}`)
             setErrors([])
         } else {
           console.log("failss!")
@@ -58,6 +59,7 @@ const UserProvider = ( {children } ) => {
     }
 
     const handleAddedPunchcard = (addedPunchcard) => {
+
       const updatedCustomers = allCustomers.map((c) => {
         if (c.id === addedPunchcard.customer.id) {
           return {
