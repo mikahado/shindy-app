@@ -46,9 +46,7 @@ const UserProvider = ( {children } ) => {
     .then(data => {
         if (!data.errors) {
             handleAddedPunchcard(data)
-            console.log(data)
             setFormFlag(false)
-            // navigate(`/customers/${data.customer_id}`)
             setErrors([])
         } else {
           console.log("failss!")
@@ -139,23 +137,21 @@ const UserProvider = ( {children } ) => {
       .then((data) => {
         handleEditedPunchcard(data);
         setErrors([]);
-        console.log("success!")
 
       })
       .catch(error => {
         // Handle any error that occurs during the request
         console.error(error);
-        console.log("sgsgsgess!")
+        console.log("nooooo!")
 
       });
     };
 
     
     const handleEditedPunchcard = (editedPunchcard) => {
-      // the following consolelog returns the correcnt infO:
-      // {id: 2, count: 4, reward: 'fafa', user: {…}, customer: {…}} 
+      console.log('punch!', editedPunchcard);
       const updatedCustomers = allCustomers.map((c) => {
-        if (c.id === editedPunchcard.customer_id) {
+        if (c.id === editedPunchcard.customer.id) {
           const updatedPunchcards = c.punchcards.map((p) =>
             p.id === editedPunchcard.id ? editedPunchcard : p
           );

@@ -7,8 +7,7 @@ const PunchcardPreview = ({punchcard}) => {
 
   // move this logic to backend:
   const userName = allCustomers?.map(u => u.users).flat().find(u => u.id === punchcard.user_id)
-
-  console.log(userName)
+  console.log('stll need to fix this', userName)
 
   const handlePunch = (e) => {
     e.preventDefault()
