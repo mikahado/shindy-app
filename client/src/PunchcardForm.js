@@ -3,7 +3,7 @@ import { UserContext } from './context/user'
 import { useParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 
-const PunchcardForm = ({addPunchcardFlag}) => {
+const PunchcardForm = ({setAddPunchcardFlag}) => {
 
     const [count, setCount] = useState(10)
     const [reward, setReward] = useState("")
@@ -20,6 +20,8 @@ const PunchcardForm = ({addPunchcardFlag}) => {
                 reward: reward,
                 customer_id: id
         })
+
+        setAddPunchcardFlag(false)
     }
  
   if (loggedIn) {

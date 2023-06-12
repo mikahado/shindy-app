@@ -2,11 +2,11 @@ import React, { useState, useContext } from 'react'
 import AllCustomersRow from './AllCustomersRow'
 import { UserContext } from './context/user'
 
-const AllCustomersTable = () => {
+const AllCustomersTable = ({allCustomers}) => {
 
   const [searchClient, setSearchClient] = useState("")
 
-  const {allCustomers } = useContext(UserContext)
+  
 
   const filterBySearch = allCustomers.filter(c => c.name.toLowerCase().includes(searchClient.toLowerCase()))
 

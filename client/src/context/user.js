@@ -50,23 +50,27 @@ const UserProvider = ( {children } ) => {
             navigate(`/customers/${data.customer_id}`)
             setErrors([])
         } else {
+          console.log("failss!")
             const errorLis = data.errors.map( e => <li>{e}</li>)
             setErrors(errorLis)
         }  
       }) 
     }
 
-    const handleAddedPunchcard = (addedPunchcard) => { 
-      const updatedCustomers = allCustomers.map(c => {
-        if (c.id === addedPunchcard.customer_id) {
-            return {...c, punchcards: [...c.punchcards, addedPunchcard]}
+    const handleAddedPunchcard = (addedPunchcard) => {
+      const updatedCustomers = allCustomers.map((c) => {
+        if (c.id === addedPunchcard.customer.id) {
+          return {
+            ...c,
+            punchcards: [...c.punchcards, addedPunchcard],
+          };
         } else {
-            return c
+          return c;
         }
-      })
-      setAllCustomers(updatedCustomers)    
-    }
-
+      });
+      setAllCustomers(updatedCustomers);
+    };
+    
     const addCustomer = (customer) => {
         fetch('/api/customers', {
         method: 'POST',
@@ -81,9 +85,13 @@ const UserProvider = ( {children } ) => {
             navigate(`/customers/${data.id}`)
             setErrors([])
             setFormFlag(false)
+            console.log("success!")
+
         } else {
             const errorLis = data.errors.map(e => <li>{e}</li>)
             setErrors(errorLis)
+            console.log("sugsgsgsess!")
+
         }
       })
     }
@@ -129,15 +137,21 @@ const UserProvider = ( {children } ) => {
       .then((data) => {
         handleEditedPunchcard(data);
         setErrors([]);
+        console.log("success!")
+
       })
       .catch(error => {
         // Handle any error that occurs during the request
         console.error(error);
+        console.log("sgsgsgess!")
+
       });
     };
 
     
     const handleEditedPunchcard = (editedPunchcard) => {
+      // the following consolelog returns the correcnt infO:
+      // {id: 2, count: 4, reward: 'fafa', user: {…}, customer: {…}} 
       const updatedCustomers = allCustomers.map((c) => {
         if (c.id === editedPunchcard.customer_id) {
           const updatedPunchcards = c.punchcards.map((p) =>
@@ -148,7 +162,6 @@ const UserProvider = ( {children } ) => {
           return c;
         }
       });
-    
       setAllCustomers(updatedCustomers);
     };
     

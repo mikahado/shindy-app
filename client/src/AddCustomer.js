@@ -8,8 +8,7 @@ const AddCustomer = () => {
 
     const [toggleNew, setToggleNew] = useState(false)
     const [toggleFind, setToggleFind] = useState(false)
-
-    const { user, loggedIn} = useContext(UserContext)
+    const { user, loggedIn, allCustomers} = useContext(UserContext)
 
     const handleNewClick = () => {
       setToggleNew(true)
@@ -36,7 +35,7 @@ const AddCustomer = () => {
 
         <br /><br />
 
-        {toggleFind ? <AllCustomersTable /> : null}
+        {toggleFind ? <AllCustomersTable key={user.id} allCustomers={allCustomers}/> : null}
                      
         </main>
         </>

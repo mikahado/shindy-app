@@ -15,7 +15,7 @@ const CustomerForm = ({setAddPunchcardFlag}) => {
         name: name
     })
 
-    setAddPunchcardFlag(false)
+    // setAddPunchcardFlag(false)
  }
  
   return (

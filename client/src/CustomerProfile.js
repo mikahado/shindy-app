@@ -10,6 +10,7 @@ import CustomerNameEdit from './CustomerNameEdit'
 const CustomerProfile = () => {
 
     const [addPunchcardFlag, setAddPunchcardFlag] = useState(false)
+    
     const [editFlag, setEditFlag ] = useState(false)
     const [editNameFlag, setEditNameFlag] = useState(false)
     // const [customer, setCustomer ] = useState([])
