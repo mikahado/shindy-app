@@ -9,7 +9,7 @@ const AddCustomer = () => {
     const [toggleNew, setToggleNew] = useState(false)
     const [toggleFind, setToggleFind] = useState(false)
 
-    const { loggedIn} = useContext(UserContext)
+    const { user, loggedIn} = useContext(UserContext)
 
     const handleNewClick = () => {
       setToggleNew(true)
@@ -28,7 +28,7 @@ const AddCustomer = () => {
         <br />
         <button className="button1" onClick={handleNewClick}>NEW CLIENT</button>
 
-        {toggleNew ? <CustomerForm /> : null}
+        {toggleNew ? <CustomerForm key={user.id}  /> : null}
 
         <br />
 

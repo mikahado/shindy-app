@@ -9,7 +9,7 @@ const Navbar = () => {
   const navigate = useNavigate()
 
   const logoutUser = () => {
-    fetch('api/logout', {
+    fetch('/api/logout', {
       method: 'DELETE',
       headers: {'Content-Type': 'application/json'},
     })

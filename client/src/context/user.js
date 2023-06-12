@@ -76,7 +76,6 @@ const UserProvider = ( {children } ) => {
     .then(resp => resp.json())
     .then(data => {
         if (!data.errors) {  
-          console.log('customer:', data)
             setUser({ ...user, customers: [...user.customers, data] })
             setAllCustomers([...allCustomers, data])
             navigate(`/customers/${data.id}`)
@@ -121,31 +120,66 @@ const UserProvider = ( {children } ) => {
     }
 
     const editPunchCount = (punchcard) => {
-        fetch(`/api/punchcards/${punchcard.id}`, {
-            method: 'PATCH',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(punchcard)
-        })
-        .then(resp => resp.json())
-        .then((data) => 
-        
-        handleEditedPunchcard(data))
-        setErrors([])
-      }
-      
-      const handleEditedPunchcard = (editedPunchcard) => {
+      fetch(`/api/punchcards/${punchcard.id}`, {
+        method: 'PATCH',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(punchcard)
+      })
+      .then(resp => resp.json())
+      .then((data) => {
+        handleEditedPunchcard(data);
+        setErrors([]);
+      })
+      .catch(error => {
+        // Handle any error that occurs during the request
+        console.error(error);
+      });
+    };
 
-        const updatedCustomers = allCustomers.map((c) => {
-          if (c.id === editedPunchcard.customer_id) {
-            return {...c, punchcards: c.punchcards.map((p) =>
-                p.id === editedPunchcard.id ? editedPunchcard : p
-              )}
-          } else {
-            return c
-          }
-        })
-        setAllCustomers(updatedCustomers)
-      }
+    
+    const handleEditedPunchcard = (editedPunchcard) => {
+      const updatedCustomers = allCustomers.map((c) => {
+        if (c.id === editedPunchcard.customer_id) {
+          const updatedPunchcards = c.punchcards.map((p) =>
+            p.id === editedPunchcard.id ? editedPunchcard : p
+          );
+          return { ...c, punchcards: updatedPunchcards };
+        } else {
+          return c;
+        }
+      });
+    
+      setAllCustomers(updatedCustomers);
+    };
+    
+
+    // const editPunchCount = (punchcard) => {
+    //     fetch(`/api/punchcards/${punchcard.id}`, {
+    //         method: 'PATCH',
+    //         headers: {'Content-Type': 'application/json'},
+    //         body: JSON.stringify(punchcard)
+    //     })
+    //     .then(resp => resp.json())
+        
+    //     .then((data) => 
+    //     handleEditedPunchcard(data))
+    //     setErrors([])
+    //   }
+      
+    //   const handleEditedPunchcard = (editedPunchcard) => {
+
+    //     const updatedCustomers = allCustomers.map((c) => {
+    //       if (c.id === editedPunchcard.customer_id) {
+    //         return {...c, punchcards: c.punchcards.map((p) =>
+    //             p.id === editedPunchcard.id ? editedPunchcard : p
+    //           )}
+    //       } else {
+    //         return c
+    //       }
+    //     })
+
+    //     setAllCustomers(updatedCustomers)
+    //   }
        
     const login = (user) => {
         setUser(user)

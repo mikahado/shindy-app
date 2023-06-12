@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 import PunchcardEdit from './PunchcardEdit'
 import PunchcardPreview from './PunchcardPreview'
 import PunchcardForm from './PunchcardForm'
+import CustomerForm from './CustomerForm';
 import CustomerNameEdit from './CustomerNameEdit'
 
 const CustomerProfile = () => {
@@ -49,7 +50,7 @@ if (loggedIn) {
             <footer>
 
             {addPunchcardFlag ? 
-                <PunchcardForm key={customer.id} id={customer.id} setPunchcardFlag={setAddPunchcardFlag} /> 
+                <PunchcardForm key={customer.id} id={customer.id} setAddPunchcardFlag={setAddPunchcardFlag} /> 
                 :
                 <button className="button1" onClick={() => setAddPunchcardFlag(true)}>ADD NEW PUNCHCARD</button>
             } 

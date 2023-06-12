@@ -7,7 +7,7 @@ const CustomerNameEdit = ({ id, setNameFlag }) => {
   const { allCustomers, editCustomerName } = useContext(UserContext);
 
   useEffect(() => {
-    const storedCustomer = allCustomers.find((p) => p.id === id);
+    const storedCustomer = allCustomers?.find((p) => p.id === id);
     if (storedCustomer) {
       setName(storedCustomer.name);
     }
