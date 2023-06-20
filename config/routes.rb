@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
   namespace :api do
-  # get '/customers/punchcard_length/:n', to: 'customers#punchcard_length'
-  # get 'customers/count/:n', to: 'customers#count'
-    # get '/count/:n', to: 'customers#count'
     
     resources :punchcards
     resources :customers 
@@ -12,6 +9,8 @@ Rails.application.routes.draw do
     post '/login', to: 'sessions#create'
     delete '/logout', to: 'sessions#destroy'
   
-  get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
 end
+
+  get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
+
 end
